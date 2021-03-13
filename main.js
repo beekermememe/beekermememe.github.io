@@ -1,19 +1,15 @@
-customElements.define('my-paragraph',
+customElements.define('wc-iframe',
     class extends HTMLElement {
         constructor() {
             super();
 
-            const template = document.getElementById('my-paragraph');
-            const templateContent = template.content;
-
-            this.attachShadow({mode: 'open'}).appendChild(
-                templateContent.cloneNode(true)
-            );
+            // Create a shadow root
+            const shadow = this.attachShadow({mode: 'open'});
+            const url = this.getAttribute('data-url');
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', url);
+            shadow.appendChild(iframe);
         }
     }
-);
+)
 
-const slottedSpan = document.querySelector('my-paragraph span');
-
-console.log(slottedSpan.assignedSlot);
-console.log(slottedSpan.slot);
