@@ -5,9 +5,10 @@ customElements.define(
             super();
 
             const divElem = document.createElement("div");
+            console.log('Div text ' + )this.getAttribute("text");
             divElem.textContent = this.getAttribute("text");
 
-            const shadowRoot = this.attachShadow({ mode: "open" });
+            const shadowRoot = this.attachShadow({ mode: "closed" });
             shadowRoot.appendChild(divElem);
         }
     }
